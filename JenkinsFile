@@ -1,0 +1,12 @@
+pipeline {
+    agent{ node 'coreos' }   // like 'master', 'linux' etc.
+
+    stages {
+            
+            stage ("sbt build") {
+                steps {
+                    sh ('ls -la')
+                }
+            }
+    }
+}
