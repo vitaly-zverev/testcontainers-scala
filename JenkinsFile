@@ -6,6 +6,7 @@ pipeline {
             stage ("sbt build") {
                 steps {
                     sh ('ls -la')
+                    sh ('sbt build')
                 }
             }
     }
