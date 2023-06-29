@@ -12,7 +12,7 @@ object Dependencies {
     scope.map(s => modules.map(_ % s)).getOrElse(modules)
   }
 
-  private val testcontainersVersion = "1.17.2"
+  private val testcontainersVersion = "1.18.1"
   private val seleniumVersion = "2.53.1"
   private val slf4jVersion = "1.7.32"
   private val scalaTestVersion = "3.2.9"
@@ -20,7 +20,7 @@ object Dependencies {
   private val scalaTestSeleniumVersion_scala2 = "3.2.2.0"
   private val scalaTestSeleniumVersion_scala3 = "3.2.9.0"
   private val junitVersion = "4.13.2"
-  private val munitVersion = "0.7.29"
+  private val munitVersion = "1.0.0-M7"
   private val mysqlConnectorVersion = "5.1.42"
   private val neo4jConnectorVersion = "4.0.0"
   private val oracleDriverVersion = "21.3.0.0"
@@ -295,5 +295,13 @@ object Dependencies {
         "com.google.cloud" % "google-cloud-bigtable" % bigtableVersion,
         "com.google.cloud" % "google-cloud-pubsub" % pubsubVersion
       )
+  )
+
+  val moduleRedpanda = Def.setting(
+    COMPILE(
+      "org.testcontainers" % "redpanda" % testcontainersVersion
+    ) ++ TEST(
+      "org.apache.kafka" % "kafka-clients" % kafkaDriverVersion
+    )
   )
 }
