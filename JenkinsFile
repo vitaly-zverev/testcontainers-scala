@@ -21,7 +21,7 @@ pipeline {
             }
 
 
-            stage ("sbt quick test") {
+            stage ("sbt Postgresql test") {
                 steps {
                     sh (' sbt "testOnly *PostgresqlSpec" ')
                 }
