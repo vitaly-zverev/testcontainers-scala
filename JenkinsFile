@@ -8,22 +8,25 @@ pipeline {
             stage ("docker test") {
                 steps {
                     sh ('docker info')
-                    sh ('docker-compose version')
+                    //sh ('docker-compose version')
                 }
             }
 
             stage ("sbt quick test") {
                 steps {
                     sh ('ls -la')
-                    sh ('java -version')
-                    sh (' sbt "testOnly com.dimafeng.testcontainers.integration.GenericContainerDockerFileSpec" ')
+                    //sh ('java -version')
+                    //sh (' sbt "testOnly com.dimafeng.testcontainers.integration.GenericContainerDockerFileSpec" ')
+                    sh "${tool name: 'sbt-1.8.3', type: 'org.jvnet.hudson.plugins.SbtPluginBuilder$SbtInstallation'}/bin/sbt \"testOnly com.dimafeng.testcontainers.integration.GenericContainerDockerFileSpe\" "                    
                 }
             }
 
 
             stage ("sbt Postgresql test") {
                 steps {
-                    sh (' sbt "testOnly *PostgresqlSpec" ')
+
+                    sh "${tool name: 'sbt-1.8.3', type: 'org.jvnet.hudson.plugins.SbtPluginBuilder$SbtInstallation'}/bin/sbt \"testOnly *PostgresqlSpec\" "                    
+                    //sh (' sbt "testOnly *PostgresqlSpec" ')
                 }
             }
 
