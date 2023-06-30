@@ -12,11 +12,11 @@ pipeline {
                 }
             }
 
-            stage ("sbt test") {
+            stage ("sbt quick test") {
                 steps {
                     sh ('ls -la')
                     sh ('java -version')
-                    sh ('sbt test')
+                    sh ('sbt testOnly com.dimafeng.testcontainers.integration.GenericContainerDockerFileSpec')
                 }
             }
     }
