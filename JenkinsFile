@@ -4,10 +4,18 @@ pipeline {
     agent{ node 'docker' }   // like 'master', 'linux' etc.
 
     stages {
-            
+
+            stage ("docker test") {
+                steps {
+                    sh ('docker info')
+                    sh ('docker-compose version')
+                }
+            }
+
             stage ("sbt test") {
                 steps {
                     sh ('ls -la')
+                    sh ('java -version')
                     sh ('sbt test')
                 }
             }
