@@ -1,0 +1,14 @@
+pipeline {
+    //agent{ node 'coreos' }   // like 'master', 'linux' etc.
+    agent{ node 'coreos_ubuntu_podman' }   // like 'master', 'linux' etc.
+
+    stages {
+            
+            stage ("sbt test") {
+                steps {
+                    sh ('ls -la')
+                    sh ('sbt test')
+                }
+            }
+    }
+}
